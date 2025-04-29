@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "../components/Navigation/Navigation.tsx";
 import {styled} from "@mui/material";
+import '../i18n';
 
 const Container = styled("div")(({ theme }) => ({
   display: "flex",

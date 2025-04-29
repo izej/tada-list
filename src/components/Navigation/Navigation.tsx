@@ -12,8 +12,11 @@ import {
   StyledBottomNavigation,
   StyledToolbar
 } from "./StyledNavigation.tsx";
+import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
+  const { t } = useTranslation();
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
@@ -30,9 +33,9 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: "Home", icon: <Home />, path: "/" },
-    { label: "Login", icon: <Login />, path: "/login" },
-    { label: "Register", icon: <PersonAdd />, path: "/register" },
+    { label: t('menu.home'), icon: <Home />, path: "/" },
+    { label:  t('menu.login'), icon: <Login />, path: "/login" },
+    { label:  t('menu.register'), icon: <PersonAdd />, path: "/register" },
   ];
 
   return isMobile ? (
