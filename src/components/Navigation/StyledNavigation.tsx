@@ -5,9 +5,12 @@ export const StyledBottomNavigation = styled(BottomNavigation)(() => ({
   bottom: 0,
   left: 0,
   right: 0,
+  width: "100%",
+  maxWidth: "100vw",
   zIndex: 1100,
-  backgroundColor: 'transparent',
+  backgroundColor: "transparent",
 }));
+
 
 export const MobileNavItemWrapper = styled(Box)(() => ({
   flex: 1,
