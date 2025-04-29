@@ -11,7 +11,6 @@ export const StyledBottomNavigation = styled(BottomNavigation)(() => ({
   backgroundColor: "transparent",
 }));
 
-
 export const MobileNavItemWrapper = styled(Box)(() => ({
   flex: 1,
   display: "flex",
@@ -43,7 +42,6 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(1),
 }));
-
 
 export const NavItems = styled("div")(({ theme }) => ({
   display: "flex",

@@ -20,7 +20,6 @@ const Main = styled("main")(({ theme }) => ({
   paddingBottom: theme.spacing(10),
 }));
 
-
 export default function MainLayout() {
 
   return (
