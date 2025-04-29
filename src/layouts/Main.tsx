@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "../components/Navigation.tsx";
+import Navigation from "../components/Navigation/Navigation.tsx";
 import {styled} from "@mui/material";
 
 const Container = styled("div")(({ theme }) => ({
