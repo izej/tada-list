@@ -50,10 +50,7 @@ const Navigation = () => {
       ))}
     </BottomNavigation>
   ) : (
-    <AppBar position="static"  color="primary" // Add this to use the theme's primary color
-            sx={{
-              bgcolor: 'background.paper' // This will use the theme's paper background color
-            }}>
+    <AppBar position="static"  color="primary">
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h6"> Tada! List </Typography>
         <div style={{ display: "flex", gap: "1rem" }}>
