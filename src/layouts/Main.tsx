@@ -18,7 +18,6 @@ const Main = styled("main")(({ theme }) => ({
   maxWidth: "768px",
   margin: "0 auto",
   padding: theme.spacing(2),
-  paddingBottom: theme.spacing(10),
 }));
 
 export default function MainLayout() {

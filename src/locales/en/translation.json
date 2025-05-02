@@ -3,5 +3,32 @@
     "home": "Home",
     "login": "Login",
     "register": "Register"
+  },
+  "register": {
+    "title": "Sign up",
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "confirm_password": "Confirm password",
+      "cta": "Sign up"
+    }
+  },
+  "login": {
+    "title": "Log in",
+    "form": {
+      "email": "E-mail",
+      "password": "Password",
+      "cta": "Log in"
+    }
+  },
+  "validation": {
+    "register": {
+      "email": "Incorrect email",
+      "password_min_length": "Password must be at least {{count}} characters long",
+      "passwords_must_match": "Passwords must match"
+    },
+    "login": {
+      "incorrect_data": "Incorrect email or password"
+    }
   }
 }
