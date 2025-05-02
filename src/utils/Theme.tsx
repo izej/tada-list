@@ -20,10 +20,19 @@ declare module '@mui/material/styles' {
         toolbarMinHeight: number;
       };
       spacingSizes: {
+        xxs: number;
         xs: number;
         s: number;
         m: number;
         l: number;
+        xl: number;
+      };
+      margins: {
+        none: number;
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
         xl: number;
       };
     };
@@ -39,10 +48,19 @@ declare module '@mui/material/styles' {
         toolbarMinHeight?: number;
       };
       spacingSizes?: {
+        xxs?: number;
         xs?: number;
         s?: number;
         m?: number;
         l?: number;
+        xl?: number;
+      };
+      margins?: {
+        none?: number;
+        xs?: number;
+        sm?: number;
+        md?: number;
+        lg?: number;
         xl?: number;
       };
     };
@@ -84,10 +102,19 @@ export const getTheme = (mode: 'light' | 'dark') =>
         toolbarMinHeight: 72,
       },
       spacingSizes: {
+        xxs: 2,
         xs: 4,
         s: 8,
         m: 16,
         l: 24,
+        xl: 32,
+      },
+      margins: {
+        none: 0,
+        xs: 4,
+        sm: 8,
+        md: 16,
+        lg: 24,
         xl: 32,
       },
     },
