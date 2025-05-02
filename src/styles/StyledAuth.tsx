@@ -1,12 +1,16 @@
 import {Box, styled} from "@mui/material";
 
 export const AuthFormContainer = styled('div')<{ component?: React.ElementType }>(
-  () => ({
+  ({theme}) => ({
     display: "flex",
     width: "50vw",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+
+    [theme.breakpoints.down("md")]: {
+      width: "100vw",
+    },
   })
 );
 
