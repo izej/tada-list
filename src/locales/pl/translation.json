@@ -21,6 +21,11 @@
       "cta": "Zaloguj się"
     }
   },
+  "not_found": {
+    "title": "Szukaliśmy wszędzie – pod dywanem, za lodówką i w wannie",
+    "content": "Niestety, tej strony nie ma. Ale hej, przynajmniej nie było tu pająków!",
+    "back": "Wróć zanim się pogubisz bardziej"
+  },
   "validation": {
     "register": {
       "email": "Niepoprawny email",

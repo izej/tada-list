@@ -21,6 +21,11 @@
       "cta": "Log in"
     }
   },
+  "not_found": {
+    "title": "We looked everywhere – under the carpet, behind the fridge and in the bathtub",
+    "content": "Unfortunately, this page is gone. But hey, at least there were no spiders here!",
+    "back": "Come back before you get even more confused"
+  },
   "validation": {
     "register": {
       "email": "Incorrect email",

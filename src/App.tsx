@@ -3,6 +3,7 @@ import MainLayout from "./layouts/Main.tsx";
 import AuthLayout from "./layouts/Auth.tsx";
 import Register from "./pages/Register/Register.tsx";
 import Login from './pages/Login/Login.tsx';
+import NotFound from "./pages/NotFound/NotFound.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,8 @@ const router = createBrowserRouter(
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
     </>
   )
 );
