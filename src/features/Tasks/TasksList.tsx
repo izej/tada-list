@@ -1,10 +1,20 @@
 import {Trans, useTranslation} from "react-i18next";
 import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks.ts";
-import {selectTasksByDateAndStatus, Task, toggleTask} from "./tasksSlice.tsx";
-import {EmptyContainer, EmptyMessage, ItemsContainer, ListContainer, TaskImage, TaskText} from "./StyledTasks.tsx";
+import {removeTask, selectTasksByDateAndStatus, Task, toggleTask} from "./tasksSlice.tsx";
+import {
+  EmptyContainer,
+  EmptyMessage,
+  ItemsContainer,
+  ListContainer,
+  TaskImage,
+  TaskItem,
+  TaskText
+} from "./StyledTasks.tsx";
 import {useMemo} from "react";
 import {TaskStatus} from "../../models/Task.ts";
 import confetti from "canvas-confetti";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {IconButton} from "@mui/material";
 
 interface TasksListProps {
   done: boolean
@@ -60,12 +70,24 @@ const TasksList = ({done}: TasksListProps) => {
     {tasks.length > 0 && <TaskText> {title} </TaskText>}
     <ItemsContainer>
       {tasks.length > 0 ? (
-        tasks.map(task => <TaskText
-          component="div"
+        tasks.map(task => <TaskItem
           onClick={() => handleTaskClick(task)}
           key={task.id}
+          secondaryAction={
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              className="delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatch(removeTask(task.id));
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          }
         >
-          {getTaskEmoji(task.text, done ? TaskStatus.DONE : TaskStatus.TO_DO)} {task.text} </TaskText>)
+          {getTaskEmoji(task.text, done ? TaskStatus.DONE : TaskStatus.TO_DO)} {task.text} </TaskItem>)
       ) : <EmptyContainer>
         {allTaskCompleted ? (
           <EmptyMessage>{t("tasks.all_completed")}</EmptyMessage>

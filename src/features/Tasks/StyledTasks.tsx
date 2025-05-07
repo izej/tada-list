@@ -1,4 +1,4 @@
-import {styled, Typography} from "@mui/material";
+import {ListItem, styled, Typography} from "@mui/material";
 
 export const Container = styled("div")(({theme}) => ({
   width: "100%",
@@ -31,14 +31,23 @@ export const ListContainer = styled("div")(({theme}) => ({
 export const ItemsContainer = styled(ListContainer)(({theme}) => ({
   backgroundColor: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius,
-  padding: theme.spacing(2),
+  padding: theme.spacing(1, 0),
   maxWidth: "100%",
   boxSizing: "border-box",
   overflowWrap: "break-word",
   wordWrap: "break-word",
 }));
 
-export const TaskText = styled(Typography)<{ done?: boolean, component?: React.ElementType }>(({done}) => ({
+export const TaskText = styled(Typography)(() => ({
+  overflowWrap: "break-word",
+  wordWrap: "break-word",
+  maxWidth: "100%",
+  boxSizing: "border-box",
+  cursor: "pointer",
+  userSelect: "none",
+}));
+
+export const TaskItem = styled(ListItem)(({theme }) => ({
   overflowWrap: "break-word",
   wordWrap: "break-word",
   maxWidth: "100%",
@@ -46,8 +55,17 @@ export const TaskText = styled(Typography)<{ done?: boolean, component?: React.E
   cursor: "pointer",
   userSelect: "none",
 
-  ...done && {
-    textDecoration: "line-through",
+  "& .delete-button": {
+    opacity: 0,
+    transition: "opacity 0.3s ease",
+  },
+
+  "&:hover .delete-button": {
+    opacity: 1,
+  },
+
+  "&:hover": {
+    backgroundColor: theme.palette.tertiary.light,
   }
 }));
 
