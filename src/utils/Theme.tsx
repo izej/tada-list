@@ -76,7 +76,7 @@ export const getTheme = (mode: 'light' | 'dark') =>
           primary: { light: '#cbc2e5', main: '#AD9FD5', dark: '#8f7cc5'},
           secondary: { light: '#e5c2dc', main: '#D59FC7', dark: '#c57cb2'},
           tertiary: { light: '#c2dce5', main: '#9FC7D5', dark: '#7cb2c5'},
-          background: { default: '#FFF8E7', paper: '#ffffff' },
+          background: { default: '#FFF8E7', paper: '#f1ebdb' },
           accent: { light: '#dce5c2', main: '#C7D59F', dark: '#b2c57c', contrastText: '#1a1a1a' },
           text: { primary: '#1a1a1a' },
         }
@@ -84,7 +84,7 @@ export const getTheme = (mode: 'light' | 'dark') =>
           primary: {light: '#ead888', main: '#e2ca5d', dark: '#dabc32'},
           secondary: { light: '#EAE8FF', main: '#EAE8FF', dark: '#bbb5ff'},
           tertiary: { light: '#E8FFF6', main: '#E8FFF6', dark: '#b5ffe2'},
-          background: { default: '#8D6B94', paper: '#1e1e1e' },
+          background: { default: '#8D6B94', paper: '#a388a9' },
           accent: { light: '#dce5c2', main: '#C7D59F', dark: '#b2c57c', contrastText: '#1a1a1a' },
           text: { primary: '#FFF8E7' },
         }),

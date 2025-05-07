@@ -1,7 +1,4 @@
-export interface Task {
-  id: string;
-  userId: string;
-  text: string;
-  createdAt: Date;
-  completed: boolean;
+export enum TaskStatus {
+  DONE = 'DONE',
+  TO_DO = 'TO_DO'
 }

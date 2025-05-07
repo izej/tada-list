@@ -10,6 +10,8 @@ const Container = styled("div")(({ theme }) => ({
   minHeight: "100vh",
   backgroundColor: theme.palette.background.default,
   color: theme.palette.text.primary,
+  overflow: "hidden",
+  boxSizing: "border-box",
 }));
 
 const Main = styled("main")(({ theme }) => ({
@@ -18,6 +20,8 @@ const Main = styled("main")(({ theme }) => ({
   maxWidth: "768px",
   margin: "0 auto",
   padding: theme.spacing(2),
+  boxSizing: "border-box",
+  overflow: "hidden",
 }));
 
 export default function MainLayout() {

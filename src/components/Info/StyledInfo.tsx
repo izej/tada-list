@@ -12,6 +12,7 @@ export const Container = styled("div")(() => ({
 
 export const InfoContainer = styled(Alert)({
   width: "100%",
+  maxWidth: "100%",
   height: "auto",
   display: "flex",
   flexDirection: "column",

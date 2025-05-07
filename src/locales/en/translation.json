@@ -28,7 +28,17 @@
   },
   "tasks": {
     "empty_list": "Hero has not yet undertaken the mission \uD83E\uDDDD\u200D",
-    "empty_list_info": "No quest was completed, but hey — even Frodo had to leave the Shire first!"
+    "empty_list_info": "No quest was completed, but hey — even Frodo had to leave the Shire first!",
+    "all_completed": "All done! Now it's time for a well-deserved rest! \uD83D\uDC86\u200D\uFE0F☕\uFE0F",
+    "empty_to_do_list": "<strong>Is it a lazy day? </strong> <br> You don't have any planned activities. Add something, or enjoy a day off! \uD83E\uDDD8\uD83C\uDFFB\u200D\uFE0F",
+    "completed": "That's already checked off! ✨",
+    "to_do": "Smaller and bigger goals for this day \uD83C\uDFAF",
+    "form": {
+      "new_task": "New task",
+      "placeholder": "e.g. making the bed",
+      "add": "Add",
+      "done": "Done!\u00A0\uD83E\uDD73"
+    }
   },
   "validation": {
     "register": {
