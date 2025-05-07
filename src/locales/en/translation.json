@@ -26,6 +26,10 @@
     "content": "Unfortunately, this page is gone. But hey, at least there were no spiders here!",
     "back": "Come back before you get even more confused"
   },
+  "tasks": {
+    "empty_list": "Hero has not yet undertaken the mission \uD83E\uDDDD\u200D",
+    "empty_list_info": "No quest was completed, but hey — even Frodo had to leave the Shire first!"
+  },
   "validation": {
     "register": {
       "email": "Incorrect email",

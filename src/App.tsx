@@ -3,13 +3,14 @@ import MainLayout from "./layouts/Main.tsx";
 import AuthLayout from "./layouts/Auth.tsx";
 import Register from "./pages/Register/Register.tsx";
 import Login from './pages/Login/Login.tsx';
+import Home from './pages/Home/Home.tsx';
 import NotFound from "./pages/NotFound/NotFound.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<MainLayout />}>
-        {/*<Route index element={<Home />} />*/}
+        <Route index element={<Home />} />
         {/*<Route path="dashboard" element={<Dashboard />} />*/}
       </Route>
 

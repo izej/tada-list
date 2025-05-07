@@ -26,6 +26,10 @@
     "content": "Niestety, tej strony nie ma. Ale hej, przynajmniej nie było tu pająków!",
     "back": "Wróć zanim się pogubisz bardziej"
   },
+  "tasks": {
+    "empty_list": "Bohater jeszcze nie podjął misji \uD83E\uDDDD\u200D",
+    "empty_list_info": "Żadne zadanie nie zostało ukończone, ale hej — nawet Frodo musiał najpierw opuścić Shire!"
+  },
   "validation": {
     "register": {
       "email": "Niepoprawny email",
