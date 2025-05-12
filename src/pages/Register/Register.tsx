@@ -4,9 +4,14 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Button, TextField, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {BottomImage, BottomImageWrapper, AuthFormContainer, StyledAuthForm} from "../../styles/StyledAuth.tsx";
+import {useRegister} from "../../hooks/useAuth.tsx";
+import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {
   const {t} = useTranslation();
+  const registration = useRegister();
+  const navigate = useNavigate();
+
   const minLength = 6;
 
   const registerSchema = z
@@ -31,7 +36,16 @@ const RegisterForm = () => {
   });
 
   const onSubmit = (data: RegisterFormData) => {
-    console.log("Rejestracja:", data);
+    registration.mutate(data, {
+      onSuccess: (data) => {
+        console.log('Zarejestrowano:', data);
+        navigate("/login");
+
+      },
+      onError: (error) => {
+        console.error('Błąd:', error);
+      },
+    });
   };
 
   return (<>
