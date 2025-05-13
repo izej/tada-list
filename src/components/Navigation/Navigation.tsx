@@ -1,5 +1,5 @@
-import {AppBar, Box, Typography, useMediaQuery} from "@mui/material";
-import { Home, Login, PersonAdd } from "@mui/icons-material";
+import {AppBar, Box, Button, Typography, useMediaQuery} from "@mui/material";
+import { Home } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -13,14 +13,20 @@ import {
   StyledToolbar
 } from "./StyledNavigation.tsx";
 import { useTranslation } from 'react-i18next';
+import {useAuth} from "../../providers/AuthContext.tsx";
 
 const Navigation = () => {
   const { t } = useTranslation();
-
+  const { logout } = useAuth();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const [value, setValue] = useState(location.pathname);
 
@@ -34,8 +40,6 @@ const Navigation = () => {
 
   const navItems = [
     { label: t('menu.home'), icon: <Home />, path: "/" },
-    { label:  t('menu.login'), icon: <Login />, path: "/login" },
-    { label:  t('menu.register'), icon: <PersonAdd />, path: "/register" },
   ];
 
   return isMobile ? (
@@ -71,7 +75,11 @@ const Navigation = () => {
           ))}
         </NavItems>
 
-        <ThemeToggle />
+        <div>
+          <ThemeToggle />
+        <Button variant="text" onClick={handleLogout}> Logout </Button>
+        </div>
+
       </StyledToolbar>
     </AppBar>
   );

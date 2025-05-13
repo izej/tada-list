@@ -10,10 +10,13 @@ import {
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useLogin} from "../../hooks/useAuth.tsx";
+import {useAuth} from "../../providers/AuthContext.tsx";
+import axios from "axios";
 
 const LoginForm = () => {
   const {t} = useTranslation();
-  const login = useLogin();
+  const { mutate: login, isPending } = useLogin();
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState<string | null>(null);
@@ -31,21 +34,24 @@ const LoginForm = () => {
 
   const onSubmit = async (data: { email: string; password: string }) => {
     setLoginError(null);
+    const API_BASE = 'http://localhost:8080';
 
-    try {
-      login.mutate(data, {
-        onSuccess: (data) => {
-          console.log('Zalogowano:', data);
-          navigate("/");
+    login(data, {
+      onSuccess: async (data) => {
+        localStorage.setItem('token', data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
-        },
-        onError: (error) => {
-          console.error('Błąd:', error);
-        },
-      });
-    } catch (error: any) {
-      setLoginError(error.message);
-    }
+        const response = await axios.get(`${API_BASE}/api/v1/users/me`);
+        const user = response.data;
+
+        setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        navigate('/');
+      },
+      onError: (err) => {
+        console.error('Błąd logowania', err);
+      },
+    });
   };
 
   return (
@@ -76,7 +82,7 @@ const LoginForm = () => {
             margin="normal"
           />
 
-          <Button type="submit" variant="contained" disabled={isSubmitting} fullWidth>
+          <Button type="submit" variant="contained" disabled={isSubmitting || isPending} fullWidth>
             {t("login.form.cta")}
           </Button>
 
