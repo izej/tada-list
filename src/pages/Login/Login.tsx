@@ -8,9 +8,14 @@ import {
   StyledAuthForm
 } from "../../styles/StyledAuth.tsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useLogin} from "../../hooks/useAuth.tsx";
 
 const LoginForm = () => {
   const {t} = useTranslation();
+  const login = useLogin();
+  const navigate = useNavigate();
+
   const [loginError, setLoginError] = useState<string | null>(null);
 
   const {
@@ -24,24 +29,20 @@ const LoginForm = () => {
     }
   });
 
-  const onSubmit = async (data: {email: string; password: string}) => {
+  const onSubmit = async (data: { email: string; password: string }) => {
     setLoginError(null);
 
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
+      login.mutate(data, {
+        onSuccess: (data) => {
+          console.log('Zalogowano:', data);
+          navigate("/");
+
+        },
+        onError: (error) => {
+          console.error('Błąd:', error);
+        },
       });
-
-      if (!response.ok) {
-        const result = await response.json();
-        throw new Error(result.message || t("validation.login.incorrect_data"));
-      }
-
-      const result = await response.json();
-      console.log("Zalogowano:", result);
-      // navigate("/dashboard");
     } catch (error: any) {
       setLoginError(error.message);
     }
@@ -50,7 +51,7 @@ const LoginForm = () => {
   return (
     <>
       <BottomImageWrapper>
-        <BottomImage src="Tada.png" alt="Tada!" />
+        <BottomImage src="Tada.png" alt="Tada!"/>
       </BottomImageWrapper>
 
       <AuthFormContainer>
@@ -75,9 +76,17 @@ const LoginForm = () => {
             margin="normal"
           />
 
-          <Button type="submit" variant="contained" disabled={isSubmitting}>
+          <Button type="submit" variant="contained" disabled={isSubmitting} fullWidth>
             {t("login.form.cta")}
           </Button>
+
+          <Typography>
+            {t("login.redirectInfo")}
+            <Button variant={"text"} onClick={() => navigate("/register")}>
+              {t("login.redirectCta")}
+            </Button>
+          </Typography>
+
         </StyledAuthForm>
       </AuthFormContainer>
     </>

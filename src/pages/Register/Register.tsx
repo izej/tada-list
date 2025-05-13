@@ -84,9 +84,16 @@ const RegisterForm = () => {
             fullWidth
           />
 
-          <Button type="submit" variant="contained" disabled={isSubmitting}>
+          <Button type="submit" variant="contained" disabled={isSubmitting} fullWidth>
             {t("register.form.cta")}
           </Button>
+
+          <Typography>
+            {t("register.redirectInfo")}
+            <Button variant={"text"} onClick={() => navigate("/login")}>
+              {t("register.redirectCta")}
+            </Button>
+          </Typography>
         </StyledAuthForm>
       </AuthFormContainer>
     </>

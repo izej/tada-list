@@ -11,7 +11,9 @@
       "password": "Hasło",
       "confirm_password": "Powtórz hasło",
       "cta": "Zarejestruj się"
-    }
+    },
+    "redirectInfo": "Masz już konto?",
+    "redirectCta": "Zaloguj się"
   },
   "login": {
     "title": "Zaloguj się",
@@ -19,7 +21,9 @@
       "email": "Adres e-mail",
       "password": "Hasło",
       "cta": "Zaloguj się"
-    }
+    },
+    "redirectInfo": "Nie masz konta?",
+    "redirectCta": "Zarejestruj się"
   },
   "not_found": {
     "title": "Szukaliśmy wszędzie – pod dywanem, za lodówką i w wannie",

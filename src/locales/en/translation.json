@@ -11,7 +11,9 @@
       "password": "Password",
       "confirm_password": "Confirm password",
       "cta": "Sign up"
-    }
+    },
+    "redirectInfo": "Already have an account?",
+    "redirectCta": "Log in"
   },
   "login": {
     "title": "Log in",
@@ -19,7 +21,9 @@
       "email": "E-mail",
       "password": "Password",
       "cta": "Log in"
-    }
+    },
+    "redirectInfo": "Don't have an account?",
+    "redirectCta": "Sign up"
   },
   "not_found": {
     "title": "We looked everywhere – under the carpet, behind the fridge and in the bathtub",
