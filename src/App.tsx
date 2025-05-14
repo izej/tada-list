@@ -11,7 +11,7 @@ import Login from './pages/Login/Login.tsx';
 import Home from './pages/Home/Home.tsx';
 import NotFound from './pages/NotFound/NotFound.tsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.tsx';
-import {AuthProvider, useAuth} from "./providers/AuthContext.tsx";
+import {useAuth} from "./providers/AuthContext.tsx";
 
 function getRoutes(isAuthenticated: boolean): RouteObject[] {
   return [
@@ -50,11 +50,7 @@ function AppWithRouter() {
 }
 
 function App() {
-  return (
-    <AuthProvider>
-      <AppWithRouter />
-    </AuthProvider>
-  );
+  return <AppWithRouter />
 }
 
 export default App;
