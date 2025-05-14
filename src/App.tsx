@@ -11,12 +11,13 @@ import Login from './pages/Login/Login.tsx';
 import Home from './pages/Home/Home.tsx';
 import NotFound from './pages/NotFound/NotFound.tsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.tsx';
-import {useAuth} from "./providers/AuthContext.tsx";
+import { useAuth } from './providers/AuthContext.tsx';
+import Spinner from './components/Spinner/Spinner.tsx';
 
-function getRoutes(isAuthenticated: boolean): RouteObject[] {
+function getRoutes(): RouteObject[] {
   return [
     {
-      element: <PrivateRoute isAuthenticated={isAuthenticated} />,
+      element: <PrivateRoute />,
       children: [
         {
           path: '/',
@@ -43,14 +44,18 @@ function getRoutes(isAuthenticated: boolean): RouteObject[] {
 }
 
 function AppWithRouter() {
-  const { user } = useAuth();
-  const router = createBrowserRouter(getRoutes(!!user));
+  const { isLoading } = useAuth();
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  const router = createBrowserRouter(getRoutes());
   return <RouterProvider router={router} />;
 }
 
 function App() {
-  return <AppWithRouter />
+  return <AppWithRouter />;
 }
 
 export default App;
