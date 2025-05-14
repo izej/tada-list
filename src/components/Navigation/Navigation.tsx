@@ -3,7 +3,7 @@ import { Home } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ThemeToggle from "../ThemeToggle/ThemeToggle.tsx";
+import ThemeToggle from "components/ThemeToggle/ThemeToggle";
 import {
   MobileNavIconWrapper,
   MobileNavItemWrapper,
@@ -11,9 +11,9 @@ import {
   NavItems,
   StyledBottomNavigation,
   StyledToolbar
-} from "./StyledNavigation.tsx";
+} from "./StyledNavigation";
 import { useTranslation } from 'react-i18next';
-import {useAuth} from "../../providers/AuthContext.tsx";
+import {useAuth} from "providers/AuthContext";
 
 const Navigation = () => {
   const { t } = useTranslation();

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User } from '../models/User';
+import { User } from 'models/User';
 import {jwtDecode} from "jwt-decode";
 import axios from 'axios';
 

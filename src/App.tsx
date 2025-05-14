@@ -4,15 +4,15 @@ import {
   RouteObject,
 } from 'react-router-dom';
 
-import MainLayout from './layouts/Main.tsx';
-import AuthLayout from './layouts/Auth.tsx';
-import Register from './pages/Register/Register.tsx';
-import Login from './pages/Login/Login.tsx';
-import Home from './pages/Home/Home.tsx';
-import NotFound from './pages/NotFound/NotFound.tsx';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute.tsx';
-import { useAuth } from './providers/AuthContext.tsx';
-import Spinner from './components/Spinner/Spinner.tsx';
+import MainLayout from 'layouts/Main';
+import AuthLayout from 'layouts/Auth';
+import Register from 'pages/Register/Register';
+import Login from 'pages/Login/Login';
+import Home from 'pages/Home/Home';
+import NotFound from 'pages/NotFound/NotFound';
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
+import { useAuth } from 'providers/AuthContext';
+import Spinner from 'components/Spinner/Spinner';
 
 function getRoutes(): RouteObject[] {
   return [

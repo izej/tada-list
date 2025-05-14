@@ -6,11 +6,11 @@ import {
   BottomImageWrapper,
   AuthFormContainer,
   StyledAuthForm
-} from "../../styles/StyledAuth.tsx";
+} from "styles/StyledAuth";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useLogin} from "../../hooks/useAuth.tsx";
-import {useAuth} from "../../providers/AuthContext.tsx";
+import {useLogin} from "hooks/useAuth";
+import {useAuth} from "providers/AuthContext";
 import axios from "axios";
 
 const LoginForm = () => {

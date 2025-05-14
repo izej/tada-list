@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../../providers/AuthContext.tsx';
-import Spinner from '../Spinner/Spinner.tsx';
+import { useAuth } from 'providers/AuthContext';
+import Spinner from 'components/Spinner/Spinner';
 
 const PrivateRoute = () => {
   const { isAuthenticated, isLoading } = useAuth();
