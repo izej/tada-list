@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_BASE = 'http://localhost:8080/api/v1/auth';
+import { AUTH_API_URL } from './apiConfig';
 
 interface Credentials {
   email: string;
@@ -8,11 +7,11 @@ interface Credentials {
 }
 
 export const registerUser = async (userData: Credentials) => {
-  const res = await axios.post(`${API_BASE}/signup`, userData);
+  const res = await axios.post(`${AUTH_API_URL}/signup`, userData);
   return res.data;
 };
 
 export const loginUser = async (credentials: Credentials) => {
-  const res = await axios.post(`${API_BASE}/login`, credentials);
+  const res = await axios.post(`${AUTH_API_URL}/login`, credentials);
   return res.data;
 };

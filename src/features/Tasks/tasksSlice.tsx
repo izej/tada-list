@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {RootState} from "app/store.ts";
+import {TASKS_API_URL} from "api/apiConfig.ts";
 
 export interface Task {
   id: string;
@@ -33,7 +34,7 @@ export const fetchTasks = createAsyncThunk<Task[]>(
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:8080/api/v1/tasks', {
+      const response = await fetch(`${TASKS_API_URL}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ export const createTask = createAsyncThunk<Task, CreateTaskPayload>(
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:8080/api/v1/tasks/create', {
+      const response = await fetch(`${TASKS_API_URL}/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ export const toggleTaskAndFetch = createAsyncThunk<Task, ToggleTaskPayload>(
   async (payload, {dispatch, rejectWithValue}) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:8080/api/v1/tasks/done', {
+      const response = await fetch(`${TASKS_API_URL}/done`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +117,7 @@ export const removeTaskAndFetch = createAsyncThunk<void, string>(
   async (payload, {dispatch, rejectWithValue}) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8080/api/v1/tasks/${payload}`, {
+      const response = await fetch(`${TASKS_API_URL}/${payload}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
