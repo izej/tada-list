@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import Navigation from "components/Navigation/Navigation";
 import {styled} from "@mui/material";
 import '../i18n';
+import {useAppDispatch} from "hooks/reduxHooks.ts";
+import {useEffect} from "react";
+import {fetchTasks} from "features/Tasks/tasksSlice.tsx";
 
 const Container = styled("div")(({ theme }) => ({
   display: "flex",
@@ -25,6 +28,11 @@ const Main = styled("main")(({ theme }) => ({
 }));
 
 export default function MainLayout() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
 
   return (
     <Container>

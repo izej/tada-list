@@ -1,10 +1,10 @@
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks.ts";
-import {addTask, selectTasksByDateAndStatus} from "./tasksSlice.tsx";
+import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
+import {createTask, selectTasksByDateAndStatus} from "./tasksSlice.tsx";
 import Info from "../../components/Info/Info.tsx";
 import {ActionsContainer, Container} from "./StyledTasks.tsx";
 import {Button, TextField} from "@mui/material";
 import {useTranslation} from "react-i18next";
-import {useState} from "react";
+import React, {useState} from "react";
 import confetti from 'canvas-confetti';
 import TasksList from "./TasksList.tsx";
 
@@ -24,7 +24,7 @@ const Tasks = () => {
   const handleAddTask = (done?: boolean) => {
     if (!newTask.trim()) return;
 
-    dispatch(addTask({text: newTask, done: done ?? false, date: today}));
+    dispatch(createTask({text: newTask, done: done ?? false, date: today}));
     setNewTask("");
 
     if (done) {

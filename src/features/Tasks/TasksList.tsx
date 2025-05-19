@@ -1,6 +1,6 @@
 import {Trans, useTranslation} from "react-i18next";
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks.ts";
-import {removeTask, selectTasksByDateAndStatus, Task, toggleTask} from "./tasksSlice.tsx";
+import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
+import {removeTaskAndFetch, selectTasksByDateAndStatus, Task, toggleTaskAndFetch} from "./tasksSlice.tsx";
 import {
   EmptyContainer,
   EmptyMessage,
@@ -11,7 +11,7 @@ import {
   TaskText
 } from "./StyledTasks.tsx";
 import {useMemo} from "react";
-import {TaskStatus} from "../../models/Task.ts";
+import {TaskStatus} from "models/Task.ts";
 import confetti from "canvas-confetti";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {IconButton} from "@mui/material";
@@ -52,17 +52,26 @@ const TasksList = ({done}: TasksListProps) => {
     return pool[index];
   };
 
-  const handleTaskClick = (task: Task) => {
-    const setDone = !task.done;
+  const handleTaskClick = async (task: Task) => {
+    try {
+      const setDone = !task.done;
 
-    dispatch(toggleTask(task.id));
+      const data = {
+        id: task.id,
+        done: setDone
+      }
 
-    if (setDone) {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {y: 0.6},
-      });
+      await dispatch(toggleTaskAndFetch(data)).unwrap();
+
+      if (setDone) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: {y: 0.6},
+        });
+      }
+    } catch (error) {
+      console.error("Failed to toggle task:", error);
     }
   }
 
@@ -80,7 +89,7 @@ const TasksList = ({done}: TasksListProps) => {
               className="delete-button"
               onClick={(e) => {
                 e.stopPropagation();
-                dispatch(removeTask(task.id));
+                dispatch(removeTaskAndFetch(task.id));
               }}
             >
               <DeleteIcon />
