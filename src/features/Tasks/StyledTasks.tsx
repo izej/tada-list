@@ -17,6 +17,30 @@ export const ActionsContainer = styled("div")(({theme}) => ({
   justifyContent: "flex-end",
   padding: theme.spacing(1, 0),
   gap: theme.spacing(1),
+  boxSizing: "border-box",
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: "column",
+    width: "100%",
+    gap: theme.spacing(1),
+  },
+}));
+
+export const ButtonsContainer = styled("div")(({theme}) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: theme.spacing(1),
+
+  [theme.breakpoints.down('sm')]: {
+    width: "100%",
+    height: "auto",
+    justifyContent: "space-between",
+    padding: theme.spacing(1, 0),
+    boxSizing: "border-box",
+
+    '& button': {
+      width: '50%'
+    }
+  },
 }));
 
 export const ListContainer = styled("div")(({theme}) => ({
@@ -78,6 +102,7 @@ export const EmptyContainer = styled("div")({
   width: "100%",
   height: "100%",
   padding: "1rem",
+  boxSizing: "border-box",
 });
 
 export const TaskImage = styled("img")({
@@ -88,8 +113,11 @@ export const TaskImage = styled("img")({
   objectFit: "contain",
 });
 
-export const EmptyMessage = styled(Typography)(() => ({
+export const EmptyMessage = styled(Typography)(({theme}) => ({
   maxWidth: "100%",
   boxSizing: "border-box",
   textAlign: "center",
+  [theme.breakpoints.down('sm')]: {
+    marginRight: theme.spacing(2),
+  },
 }));

@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
 import {createTask, selectTasksByDateAndStatus} from "./tasksSlice.tsx";
 import Info from "../../components/Info/Info.tsx";
-import {ActionsContainer, Container} from "./StyledTasks.tsx";
+import {ActionsContainer, ButtonsContainer, Container} from "./StyledTasks.tsx";
 import {Button, TextField} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import React, {useState} from "react";
@@ -54,19 +54,21 @@ const Tasks = () => {
         size="small"
       />
 
-      <Button variant="contained"
-              color="secondary"
-              disabled={!newTask.trim()}
-              onClick={() => handleAddTask(true)}>
-        {t("tasks.form.done")}
-      </Button>
+      <ButtonsContainer>
+        <Button variant="contained"
+                color="secondary"
+                disabled={!newTask.trim()}
+                onClick={() => handleAddTask(true)}>
+          {t("tasks.form.done")}
+        </Button>
 
-      <Button variant="contained"
-              color="primary"
-              disabled={!newTask.trim()}
-              onClick={() => handleAddTask(false)}>
-        {t("tasks.form.add")}
-      </Button>
+        <Button variant="contained"
+                color="primary"
+                disabled={!newTask.trim()}
+                onClick={() => handleAddTask(false)}>
+          {t("tasks.form.add")}
+        </Button>
+      </ButtonsContainer>
     </ActionsContainer>
 
     <TasksList done={false}/>
