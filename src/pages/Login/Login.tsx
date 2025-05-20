@@ -12,6 +12,7 @@ import {useNavigate} from "react-router-dom";
 import {useLogin} from "hooks/useAuth";
 import {useAuth} from "providers/AuthContext";
 import axios from "axios";
+import api from "api/apiConfig";
 
 const LoginForm = () => {
   const {t} = useTranslation();
@@ -40,6 +41,7 @@ const LoginForm = () => {
       onSuccess: async (data) => {
         localStorage.setItem('token', data.token);
         axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+        api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
         const response = await axios.get(`${API_BASE}/api/v1/users/me`);
         const user = response.data;

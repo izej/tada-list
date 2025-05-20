@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from 'models/User';
 import {jwtDecode} from "jwt-decode";
 import api from 'api/apiConfig';
+import axios from 'axios';
 
 interface AuthContextType {
   user: User | null;
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (!isExpired) {
 
           api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
           if (storedUser) {
             setUser(JSON.parse(storedUser));
@@ -57,6 +58,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem('user');
 
     delete api.defaults.headers.common['Authorization'];
+    delete axios.defaults.headers.common['Authorization'];
     setUser(null);
   };
 
