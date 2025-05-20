@@ -25,6 +25,9 @@ const Main = styled("main")(({ theme }) => ({
   padding: theme.spacing(2),
   boxSizing: "border-box",
   overflow: "hidden",
+  [theme.breakpoints.down("sm")]: {
+    paddingBottom: theme.spacing(8), // Add extra padding at the bottom for mobile to prevent content from being covered by the navigation
+  },
 }));
 
 export default function MainLayout() {

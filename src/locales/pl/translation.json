@@ -1,6 +1,7 @@
 {
   "menu": {
     "home": "Strona główna",
+    "calendar": "Kalenadrz",
     "login": "Login",
     "register": "Rejestracja"
   },

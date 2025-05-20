@@ -62,8 +62,8 @@ export const NavItem = styled("div", {
     height: theme.custom.nav.iconHeight,
     borderRadius: theme.shape.borderRadius * 10,
     minWidth: theme.custom.nav.iconWidth,
-    backgroundColor: current ? theme.palette.tertiary.main : "none",
-    color: current ? theme.palette.background.default : theme.palette.text.primary,
+    backgroundColor: current ? theme.palette.tertiary.main : theme.palette.tertiary.light,
+    color: current ? theme.palette.background.default : theme.palette.background.default,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -71,7 +71,7 @@ export const NavItem = styled("div", {
   },
 
   "&:hover .icon-wrapper": {
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: !current ? theme.palette.secondary.light : 'undefined',
     color: theme.palette.background.default
   },
 }));

@@ -1,6 +1,7 @@
 {
   "menu": {
     "home": "Home",
+    "calendar": "Calendar",
     "login": "Login",
     "register": "Register"
   },

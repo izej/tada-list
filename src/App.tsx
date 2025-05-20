@@ -13,6 +13,7 @@ import NotFound from 'pages/NotFound/NotFound';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { useAuth } from 'providers/AuthContext';
 import Spinner from 'components/Spinner/Spinner';
+import Calendar from "pages/Calendar/Calendar.tsx";
 
 function getRoutes(): RouteObject[] {
   return [
@@ -25,6 +26,13 @@ function getRoutes(): RouteObject[] {
           children: [
             { index: true, element: <Home /> },
             // { path: 'dashboard', element: <Dashboard /> },
+          ],
+        },
+        {
+          path: '/calendar',
+          element: <MainLayout />,
+          children: [
+            { index: true, element: <Calendar /> },
           ],
         },
       ],
