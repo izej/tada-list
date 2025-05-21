@@ -1,7 +1,10 @@
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { format, startOfWeek, addDays } from 'date-fns';
+import { pl } from 'date-fns/locale/pl';
+import { enUS } from 'date-fns/locale/en-US';
 import { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { WeekPickerContainer, StyledTextField, StyledInputAdornment } from './StyledWeekPicker';
 
 const WeekPicker = ({ selectedDate, onChange }: {
@@ -10,10 +13,12 @@ const WeekPicker = ({ selectedDate, onChange }: {
 }) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement | null>(null);
+  const { i18n } = useTranslation();
 
+  const locale = i18n.language === 'pl' ? pl : enUS;
   const weekStart = startOfWeek(selectedDate, { weekStartsOn: 1 });
   const weekEnd = addDays(weekStart, 6);
-  const formattedRange = `${format(weekStart, 'MMM d')} – ${format(weekEnd, 'MMM d, yyyy')}`;
+  const formattedRange = `${format(weekStart, 'MMM d', { locale })} – ${format(weekEnd, 'MMM d, yyyy', { locale })}`;
 
   return (
     <WeekPickerContainer ref={anchorRef}>
