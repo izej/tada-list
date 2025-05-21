@@ -23,6 +23,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import WeekPicker from "components/WeekPicker/WeekPicker.tsx";
 import {useTranslation} from "react-i18next";
+import TasksList from "features/Tasks/TasksList.tsx";
 
 const WeeklyCalendar = () => {
   const { t } = useTranslation();
@@ -86,10 +87,7 @@ const WeeklyCalendar = () => {
         </WeekNavigation>
 
         <Box>
-          <Typography variant="h6" gutterBottom>
-            Wybrany dzień: {format(selectedDate, "EEEE, MMMM d, yyyy")}
-          </Typography>
-          <Typography variant="body1">Notatki / dane z tego dnia...</Typography>
+          <TasksList done={true} date={selectedDate.toISOString().split('T')[0]} readonly={true}/>
         </Box>
       </CalendarContainer>
     </LocalizationProvider>

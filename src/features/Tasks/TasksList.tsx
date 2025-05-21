@@ -17,16 +17,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {IconButton} from "@mui/material";
 
 interface TasksListProps {
-  done: boolean
+  done: boolean,
+  date?: string,
+  readonly?: boolean,
 }
 
-const TasksList = ({done}: TasksListProps) => {
+const TasksList = ({done, date, readonly}: TasksListProps) => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
 
   const today = new Date().toISOString().split('T')[0];
-  const completedTasks = useAppSelector(selectTasksByDateAndStatus(today, true));
-  const toDoTasks = useAppSelector(selectTasksByDateAndStatus(today, false));
+  const completedTasks = useAppSelector(selectTasksByDateAndStatus(date ?? today, true));
+  const toDoTasks = useAppSelector(selectTasksByDateAndStatus(date ?? today, false));
 
 
   const tasks = useMemo(() => done ? completedTasks : toDoTasks, [done, completedTasks, toDoTasks]);
@@ -80,10 +82,12 @@ const TasksList = ({done}: TasksListProps) => {
     <ItemsContainer>
       {tasks.length > 0 ? (
         tasks.map(task => <TaskItem
-          onClick={() => handleTaskClick(task)}
+          onClick={() => readonly ? null : handleTaskClick(task)}
           key={task.id}
+          readonly={readonly}
           secondaryAction={
-            <IconButton
+          readonly ? null :
+          <IconButton
               edge="end"
               aria-label="delete"
               className="delete-button"
@@ -100,9 +104,13 @@ const TasksList = ({done}: TasksListProps) => {
       ) : <EmptyContainer>
         {allTaskCompleted ? (
           <EmptyMessage>{t("tasks.all_completed")}</EmptyMessage>
+        ) : readonly ? (
+          <EmptyMessage>
+            <Trans i18nKey="tasks.default_empty_list" components={{ strong: <strong />, br: <br /> }} />
+          </EmptyMessage>
         ) : (
           <EmptyMessage>
-            <Trans i18nKey="tasks.empty_to_do_list" components={{strong: <strong/>, br: <br/>}}/>
+            <Trans i18nKey="tasks.empty_to_do_list" components={{ strong: <strong />, br: <br /> }} />
           </EmptyMessage>
         )}
         <TaskImage src={emptyBoxImage} alt="No tasks"/>

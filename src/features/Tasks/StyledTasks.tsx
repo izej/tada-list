@@ -71,12 +71,12 @@ export const TaskText = styled(Typography)(() => ({
   userSelect: "none",
 }));
 
-export const TaskItem = styled(ListItem)(({theme }) => ({
+export const TaskItem = styled(ListItem)<{ readonly?: boolean }>(({theme, readonly }) => ({
   overflowWrap: "break-word",
   wordWrap: "break-word",
   maxWidth: "100%",
   boxSizing: "border-box",
-  cursor: "pointer",
+  cursor: readonly ? "unset" : "pointer",
   userSelect: "none",
 
   "& .delete-button": {
@@ -89,7 +89,7 @@ export const TaskItem = styled(ListItem)(({theme }) => ({
   },
 
   "&:hover": {
-    backgroundColor: theme.palette.tertiary.light,
+    backgroundColor: !readonly ? theme.palette.tertiary.light : 'transparent',
   }
 }));
 
