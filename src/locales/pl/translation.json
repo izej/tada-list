@@ -36,7 +36,7 @@
     "empty_list_info": "Żadne zadanie nie zostało ukończone, ale hej — nawet Frodo musiał najpierw opuścić Shire!",
     "all_completed": "Wszystko zrobione! Teraz czas dla Ciebie \uD83D\uDC86\u200D\uFE0F☕\uFE0F",
     "empty_to_do_list": "<strong>Czy to dzień leniuszka?</strong> <br> Nie masz żadnych zaplanowanych działań. Dodaj coś, lub ciesz się dniem wolnym! \uD83E\uDDD8\uD83C\uDFFB\u200D\uFE0F",
-    "default_empty_list": "<strong>Ah, co za piękny, leniwy dzień!</strong> <br> Tego dnia nie odhaczyliśmy żadnych zadań. Nic do zrobienia - tylko relaks\uD83C\uDF79",
+    "default_empty_list": "<strong>Ah, co za piękny, leniwy dzień!</strong> <br> Tego dnia nie ma żadnych zadań. Nic do zrobienia - tylko relaks\uD83C\uDF79",
     "completed": "To już odhaczone!✨",
     "to_do": "Mniejsze i większe cele na ten dzień \uD83C\uDFAF",
     "form": {

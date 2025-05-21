@@ -19,17 +19,23 @@ import {IconButton} from "@mui/material";
 interface TasksListProps {
   done: boolean,
   date?: string,
-  readonly?: boolean,
+  calendarMode?: boolean,
 }
 
-const TasksList = ({done, date, readonly}: TasksListProps) => {
+const TasksList = ({done, date, calendarMode}: TasksListProps) => {
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
 
   const today = new Date().toISOString().split('T')[0];
-  const completedTasks = useAppSelector(selectTasksByDateAndStatus(date ?? today, true));
-  const toDoTasks = useAppSelector(selectTasksByDateAndStatus(date ?? today, false));
+  const isFutureDate = useMemo(() => date ? new Date().getTime() <= new Date(date).getTime() : false, [date, today]);
 
+  const completedTasks = useAppSelector(state =>
+    selectTasksByDateAndStatus(date ?? today, true)(state)
+  );
+
+  const toDoTasks =  useAppSelector(state =>
+    selectTasksByDateAndStatus(date ?? today, false)(state)
+  );
 
   const tasks = useMemo(() => done ? completedTasks : toDoTasks, [done, completedTasks, toDoTasks]);
 
@@ -82,11 +88,11 @@ const TasksList = ({done, date, readonly}: TasksListProps) => {
     <ItemsContainer>
       {tasks.length > 0 ? (
         tasks.map(task => <TaskItem
-          onClick={() => readonly ? null : handleTaskClick(task)}
+          onClick={() => calendarMode ? null : handleTaskClick(task)}
           key={task.id}
-          readonly={readonly}
+          readonly={calendarMode}
           secondaryAction={
-          readonly ? null :
+            (calendarMode && done) ? null :
           <IconButton
               edge="end"
               aria-label="delete"
@@ -104,7 +110,7 @@ const TasksList = ({done, date, readonly}: TasksListProps) => {
       ) : <EmptyContainer>
         {allTaskCompleted ? (
           <EmptyMessage>{t("tasks.all_completed")}</EmptyMessage>
-        ) : readonly ? (
+        ) : (calendarMode && !isFutureDate && done) ? (
           <EmptyMessage>
             <Trans i18nKey="tasks.default_empty_list" components={{ strong: <strong />, br: <br /> }} />
           </EmptyMessage>

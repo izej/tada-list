@@ -1,78 +1,32 @@
-import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
-import {createTask, selectTasksByDateAndStatus} from "./tasksSlice.tsx";
-import Info from "../../components/Info/Info.tsx";
-import {ActionsContainer, ButtonsContainer, Container} from "./StyledTasks.tsx";
-import {Button, TextField} from "@mui/material";
+import {useAppSelector} from "hooks/reduxHooks";
+import {selectTasksByDateAndStatus} from "./tasksSlice";
+import Info from "../../components/Info/Info";
+import {Container} from "./StyledTasks";
 import {useTranslation} from "react-i18next";
-import React, {useState} from "react";
-import confetti from 'canvas-confetti';
-import TasksList from "./TasksList.tsx";
+import TasksList from "./TasksList";
+import TaskInput from "./TaskInput";
 
 const Tasks = () => {
   const {t} = useTranslation();
-  const dispatch = useAppDispatch();
-
-  const [newTask, setNewTask] = useState("");
-
   const today = new Date().toISOString().split('T')[0];
-  const completedTasks = useAppSelector(selectTasksByDateAndStatus(today, true));
+  const completedTasks = useAppSelector(state =>
+    selectTasksByDateAndStatus(today, true)(state)
+  );
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTask(e.target.value);
-  };
+  return (
+    <Container>
+      {completedTasks.length > 0
+        ? <TasksList done={true}/>
+        : <Info
+          title={t("tasks.empty_list")}
+          content={t("tasks.empty_list_info")}
+        />
+      }
 
-  const handleAddTask = (done?: boolean) => {
-    if (!newTask.trim()) return;
-
-    dispatch(createTask({text: newTask, done: done ?? false, date: today}));
-    setNewTask("");
-
-    if (done) {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {y: 0.6},
-      });
-    }
-  };
-
-  return <Container>
-    {completedTasks.length > 0
-      ? <TasksList done={true}/>
-
-      : <Info title={t("tasks.empty_list")}
-              content={t("tasks.empty_list_info")}
-      />
-    }
-
-    <ActionsContainer>
-      <TextField
-        fullWidth
-        value={newTask}
-        onChange={handleInputChange}
-        placeholder={t("tasks.form.placeholder")}
-        size="small"
-      />
-
-      <ButtonsContainer>
-        <Button variant="contained"
-                color="secondary"
-                disabled={!newTask.trim()}
-                onClick={() => handleAddTask(true)}>
-          {t("tasks.form.done")}
-        </Button>
-
-        <Button variant="contained"
-                color="primary"
-                disabled={!newTask.trim()}
-                onClick={() => handleAddTask(false)}>
-          {t("tasks.form.add")}
-        </Button>
-      </ButtonsContainer>
-    </ActionsContainer>
-
-    <TasksList done={false}/>
-  </Container>;
-}
+      <TaskInput />
+      <TasksList done={false}/>
+    </Container>
+  );
+};
 
 export default Tasks;

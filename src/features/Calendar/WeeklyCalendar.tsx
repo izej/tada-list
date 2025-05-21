@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {
   startOfWeek,
   addDays,
@@ -19,23 +19,26 @@ import {
   WeekNavigation,
 } from "features/Calendar/StyledWeeklyCalendar.tsx";
 
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import WeekPicker from "components/WeekPicker/WeekPicker.tsx";
 import {useTranslation} from "react-i18next";
 import TasksList from "features/Tasks/TasksList.tsx";
+import TaskInput from "features/Tasks/TaskInput.tsx";
 
 const WeeklyCalendar = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentWeekStart, setCurrentWeekStart] = useState(
-    startOfWeek(new Date(), { weekStartsOn: 1 })
+    startOfWeek(new Date(), {weekStartsOn: 1})
   );
+
+  const isFutureDate = useMemo(() => selectedDate ? new Date().getTime() <= new Date(format(selectedDate, 'yyyy-MM-dd')).getTime() : false, [selectedDate]);
 
   const updateWeekToDate = (date: Date | null) => {
     setSelectedDate(date ?? new Date());
-    setCurrentWeekStart(startOfWeek(date ?? new Date(), { weekStartsOn: 1 }));
+    setCurrentWeekStart(startOfWeek(date ?? new Date(), {weekStartsOn: 1}));
   };
 
   const days = [...Array(7)].map((_, i) => addDays(currentWeekStart, i));
@@ -60,13 +63,14 @@ const WeeklyCalendar = () => {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CalendarContainer>
         <HeaderContainer>
-          <WeekPicker selectedDate={selectedDate} onChange={updateWeekToDate} />
-          <TodayButton variant={"contained"} onClick={() => setSelectedDate(new Date())}> {t('calendar.today')} </TodayButton>
+          <WeekPicker selectedDate={selectedDate} onChange={updateWeekToDate}/>
+          <TodayButton variant={"contained"}
+                       onClick={() => setSelectedDate(new Date())}> {t('calendar.today')} </TodayButton>
         </HeaderContainer>
 
         <WeekNavigation>
           <IconButton onClick={goToPrevWeek}>
-            <ArrowBackIosIcon />
+            <ArrowBackIosIcon/>
           </IconButton>
 
           <DaysGrid>
@@ -82,12 +86,18 @@ const WeeklyCalendar = () => {
           </DaysGrid>
 
           <IconButton onClick={goToNextWeek}>
-            <ArrowForwardIosIcon />
+            <ArrowForwardIosIcon/>
           </IconButton>
         </WeekNavigation>
 
         <Box>
-          <TasksList done={true} date={selectedDate.toISOString().split('T')[0]} readonly={true}/>
+          <TasksList done={!isFutureDate} date={format(selectedDate, 'yyyy-MM-dd')} calendarMode={true}/>
+
+          {
+            isFutureDate ? <TaskInput date={format(selectedDate, 'yyyy-MM-dd')} calendarMode={true}/>
+              : null
+          }
+
         </Box>
       </CalendarContainer>
     </LocalizationProvider>
