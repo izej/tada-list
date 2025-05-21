@@ -45,6 +45,9 @@
       "done": "Done!\u00A0\uD83E\uDD73"
     }
   },
+  "calendar": {
+    "today": "Today"
+  },
   "validation": {
     "register": {
       "email": "Incorrect email",

@@ -1,5 +1,7 @@
+import WeeklyCalendar from "features/Calendar/WeeklyCalendar";
+
 const Calendar = () => {
-  return <div>Calendar</div>;
+  return <WeeklyCalendar/>;
 };
 
 export default Calendar;

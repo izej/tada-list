@@ -45,6 +45,9 @@
       "done": "Zrobione! \uD83E\uDD73"
     }
   },
+  "calendar": {
+    "today": "Dzisiaj"
+  },
   "validation": {
     "register": {
       "email": "Niepoprawny email",
