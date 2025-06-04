@@ -13,12 +13,15 @@ import {useLogin} from "hooks/useAuth";
 import {useAuth} from "providers/AuthContext";
 import axios from "axios";
 import api from "api/apiConfig";
+import { useAppDispatch } from "hooks/reduxHooks";
+import { setUserData } from "features/Profile/profileSlice";
 
 const LoginForm = () => {
   const {t} = useTranslation();
   const { mutate: login, isPending } = useLogin();
   const { setUser } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [loginError, setLoginError] = useState<string | null>(null);
 
@@ -48,6 +51,9 @@ const LoginForm = () => {
 
         setUser(user);
         localStorage.setItem('user', JSON.stringify(user));
+
+        dispatch(setUserData(user));
+
         navigate('/');
       },
       onError: (err) => {

@@ -2,6 +2,7 @@
   "menu": {
     "home": "Strona główna",
     "calendar": "Kalenadrz",
+    "profile": "Profil",
     "login": "Login",
     "register": "Rejestracja"
   },
@@ -48,6 +49,15 @@
   },
   "calendar": {
     "today": "Dzisiaj"
+  },
+  "profile": {
+    "greeting": "Hej {{name}}, dobrze Cię widzieć!",
+    "info":  "Zaktualizuj, co trzeba i leć dalej \uD83D\uDCA8"
+  },
+  "theme_toggle": {
+    "title": "Jedi czy Sith?",
+    "dark": "Przejdź na ciemną stronę mocy",
+    "light": "Wróć na jasną stronę mocy"
   },
   "validation": {
     "register": {

@@ -4,6 +4,8 @@ export const AUTH_API_URL = `${API_BASE_URL}/auth`;
 
 export const TASKS_API_URL = `${API_BASE_URL}/tasks`;
 
+export const PROFILE_API_URL = `${API_BASE_URL}/profile`;
+
 import axios from 'axios';
 
 

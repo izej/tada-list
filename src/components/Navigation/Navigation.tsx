@@ -1,9 +1,8 @@
 import {AppBar, Box, Button, Typography, useMediaQuery} from "@mui/material";
-import { Home, EventAvailable } from "@mui/icons-material";
+import { Home, EventAvailable, Face2 } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ThemeToggle from "components/ThemeToggle/ThemeToggle";
 import {
   MobileNavIconWrapper,
   MobileNavItemWrapper,
@@ -41,6 +40,7 @@ const Navigation = () => {
   const navItems = [
     { label: t('menu.home'), icon: <Home />, path: "/" },
     { label: t('menu.calendar'), icon: <EventAvailable />, path: "/calendar" },
+    { label: t('menu.profile'), icon: <Face2 />, path: "/profile" },
   ];
 
   return isMobile ? (
@@ -77,7 +77,6 @@ const Navigation = () => {
         </NavItems>
 
         <div>
-          <ThemeToggle />
         <Button variant="text" onClick={handleLogout}> Logout </Button>
         </div>
 

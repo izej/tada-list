@@ -2,6 +2,7 @@
   "menu": {
     "home": "Home",
     "calendar": "Calendar",
+    "profile": "Profile",
     "login": "Login",
     "register": "Register"
   },
@@ -48,6 +49,15 @@
   },
   "calendar": {
     "today": "Today"
+  },
+  "profile": {
+    "greeting": "Hello {{name}}, good to see you!",
+    "info":  "Update what you need and move on \uD83D\uDCA8"
+  },
+  "theme_toggle": {
+    "title": "Jedi or Sith?",
+    "dark": "Come to the dark side",
+    "light": "Back to the light!"
   },
   "validation": {
     "register": {

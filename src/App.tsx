@@ -14,6 +14,7 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { useAuth } from 'providers/AuthContext';
 import Spinner from 'components/Spinner/Spinner';
 import Calendar from "pages/Calendar/Calendar.tsx";
+import Profile from "pages/Profile/Profile.tsx";
 
 function getRoutes(): RouteObject[] {
   return [
@@ -33,6 +34,13 @@ function getRoutes(): RouteObject[] {
           element: <MainLayout />,
           children: [
             { index: true, element: <Calendar /> },
+          ],
+        },
+        {
+          path: '/profile',
+          element: <MainLayout />,
+          children: [
+            { index: true, element: <Profile /> },
           ],
         },
       ],
