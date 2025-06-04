@@ -16,6 +16,8 @@ interface EditProfileDataPayload {
   name?: string,
   email?: string,
   password?: string,
+  theme?: ThemeMode,
+  avatar?: string
 }
 
 

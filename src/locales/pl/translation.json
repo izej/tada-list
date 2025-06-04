@@ -52,7 +52,10 @@
   },
   "profile": {
     "greeting": "Hej {{name}}, dobrze Cię widzieć!",
-    "info":  "Zaktualizuj, co trzeba i leć dalej \uD83D\uDCA8"
+    "info":  "Zaktualizuj, co trzeba i leć dalej \uD83D\uDCA8",
+    "edit": {
+      "cta": "Zapisz zmiany"
+    }
   },
   "theme_toggle": {
     "title": "Jedi czy Sith?",

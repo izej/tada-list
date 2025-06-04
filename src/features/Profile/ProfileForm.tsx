@@ -29,14 +29,52 @@ const ProfileForm = () => {
     dispatch(fetchProfileData());
   }, [dispatch]);
 
-  const name = profileData?.name ?? profileData?.userData?.email;
+  const [initialFormData, setInitialFormData] = useState({
+    name: "",
+    theme: ThemeMode.LIGHT,
+    avatar: ""
+  });
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    if (profileData) {
+      const newFormData = {
+        name: profileData.name || profileData?.userData?.email || "",
+        theme: profileData.themeMode || ThemeMode.LIGHT,
+        avatar: profileData.avatar || ""
+      };
+      setFormData(newFormData);
+      setInitialFormData(newFormData);
+    }
+  }, [profileData]);
+
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleThemeChange = (theme: ThemeMode) => {
+    setFormData((prev) => ({
+      ...prev,
+      theme,
+    }));
+  };
+
+  const handleAvatarChange = (avatar: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      avatar,
+    }));
+  };
+
+  const hasChanges = () => {
+    return (
+      formData.name !== initialFormData.name ||
+      formData.theme !== initialFormData.theme ||
+      formData.avatar !== initialFormData.avatar
+    );
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -45,11 +83,25 @@ const ProfileForm = () => {
     setSuccessMessage("");
 
     dispatch(editData(formData))
+      .unwrap()
+      .then(() => {
+        setSuccessMessage("Zmiany zostały zapisane pomyślnie");
+        setInitialFormData(formData);
+      })
+      .catch((error) => {
+        console.error("Failed to save changes:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return <StyledForm>
       <Box component="form" onSubmit={handleSubmit}>
-        <ProfileAvatar/>
+        <ProfileAvatar
+          value={formData.avatar}
+          onChange={handleAvatarChange}
+        />
 
         <TextField
           label="Imię"
@@ -61,18 +113,22 @@ const ProfileForm = () => {
 
         <ThemeContainer>
           <Typography> {t("theme_toggle.title")} </Typography>
-          <ThemeToggle toggleMode={ThemeToggleMode.TEXT}/>
+          <ThemeToggle 
+            toggleMode={ThemeToggleMode.TEXT}
+            value={formData.theme}
+            onChange={handleThemeChange}
+          />
         </ThemeContainer>
 
         <Button
           type="submit"
           variant="contained"
           color="primary"
-          disabled={loading || formData.name.trim() === ""}
+          disabled={loading || !hasChanges()}
           fullWidth
           sx={{ mt: 2 }}
         >
-          {loading ? <CircularProgress size={24} /> : "Zapisz zmiany"}
+          {loading ? <CircularProgress size={24} /> : t("profile.edit.cta")}
         </Button>
 
         {successMessage && (

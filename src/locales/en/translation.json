@@ -52,7 +52,10 @@
   },
   "profile": {
     "greeting": "Hello {{name}}, good to see you!",
-    "info":  "Update what you need and move on \uD83D\uDCA8"
+    "info":  "Update what you need and move on \uD83D\uDCA8",
+    "edit": {
+      "cta": "Save"
+    }
   },
   "theme_toggle": {
     "title": "Jedi or Sith?",

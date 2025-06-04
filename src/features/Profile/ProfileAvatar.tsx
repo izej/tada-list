@@ -18,8 +18,13 @@ const leonard = "/avatars/leonard.png";
 const bernadette = "/avatars/bernadette.png";
 const stuart = "/avatars/stuart.png";
 
-const ProfileAvatar = () => {
-  const [currentAvatar, setCurrentAvatar] = useState<string | null>(null);
+interface ProfileAvatarProps {
+  value?: string;
+  onChange?: (avatar: string) => void;
+}
+
+const ProfileAvatar = ({ value, onChange }: ProfileAvatarProps) => {
+  const [currentAvatar, setCurrentAvatar] = useState<string | null>(value || null);
 
   const avatars = [sheldon2, raj, penny, howard, amy, leonard, bernadette, stuart];
 
@@ -38,7 +43,12 @@ const ProfileAvatar = () => {
             src={avatar}
             alt={`Avatar ${index + 1}`}
             selected={avatar === currentAvatar}
-            onClick={() => setCurrentAvatar(avatar)}
+            onClick={() => {
+              setCurrentAvatar(avatar);
+              if (onChange) {
+                onChange(avatar);
+              }
+            }}
           />
         ))}
       </RightContainer>
