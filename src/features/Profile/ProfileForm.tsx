@@ -12,6 +12,10 @@ const ProfileForm = () => {
   const dispatch = useAppDispatch();
   const {t} = useTranslation();
 
+  const profileData = useAppSelector(state =>
+    selectProfileData()(state)
+  );
+
   const [formData, setFormData] = useState({
     name: "",
     theme: ThemeMode.LIGHT,
@@ -19,11 +23,6 @@ const ProfileForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-
-
-  const profileData = useAppSelector(state =>
-    selectProfileData()(state)
-  );
 
   useEffect(() => {
     dispatch(fetchProfileData());
@@ -85,7 +84,6 @@ const ProfileForm = () => {
     dispatch(editData(formData))
       .unwrap()
       .then(() => {
-        setSuccessMessage("Zmiany zostały zapisane pomyślnie");
         setInitialFormData(formData);
       })
       .catch((error) => {
@@ -104,7 +102,7 @@ const ProfileForm = () => {
         />
 
         <TextField
-          label="Imię"
+          label={t("profile.edit.name")}
           name="name"
           fullWidth
           value={formData.name}

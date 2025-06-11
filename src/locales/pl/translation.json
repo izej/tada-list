@@ -54,7 +54,8 @@
     "greeting": "Hej {{name}}, dobrze Cię widzieć!",
     "info":  "Zaktualizuj, co trzeba i leć dalej \uD83D\uDCA8",
     "edit": {
-      "cta": "Zapisz zmiany"
+      "cta": "Zapisz zmiany",
+      "name": "Imię"
     }
   },
   "theme_toggle": {

@@ -41,7 +41,7 @@ export const fetchProfileData = createAsyncThunk<ProfileData>(
     try {
       const response = await api.get(`${PROFILE_API_URL}`);
 
-      return response.data.content as ProfileData;
+      return response.data as ProfileData;
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }

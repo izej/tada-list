@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {
   AvatarImage,
   AvatarsContainer,
@@ -29,6 +29,12 @@ const ProfileAvatar = ({ value, onChange }: ProfileAvatarProps) => {
   const avatars = [sheldon2, raj, penny, howard, amy, leonard, bernadette, stuart];
 
   const displayedAvatar = currentAvatar || placeholderAvatar;
+
+  useEffect(() => {
+    if (value) {
+      setCurrentAvatar(value);
+    }
+  }, [value]);
 
   return (
     <AvatarsContainer>
