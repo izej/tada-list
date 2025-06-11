@@ -31,9 +31,7 @@ const ProfileAvatar = ({ value, onChange }: ProfileAvatarProps) => {
   const displayedAvatar = currentAvatar || placeholderAvatar;
 
   useEffect(() => {
-    if (value) {
-      setCurrentAvatar(value);
-    }
+      setCurrentAvatar(value || null);
   }, [value]);
 
   return (

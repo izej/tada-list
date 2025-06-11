@@ -7,10 +7,12 @@ import ProfileAvatar from "features/Profile/ProfileAvatar.tsx";
 import ThemeToggle, {ThemeToggleMode} from "components/ThemeToggle/ThemeToggle.tsx";
 import {useTranslation} from "react-i18next";
 import {ThemeMode} from "models/Theme.ts";
+import {useThemeMode} from "providers/ThemeModeContext.tsx";
 
 const ProfileForm = () => {
   const dispatch = useAppDispatch();
   const {t} = useTranslation();
+  const {toggleColorMode, mode: currentTheme} = useThemeMode();
 
   const profileData = useAppSelector(state =>
     selectProfileData()(state)
@@ -59,6 +61,11 @@ const ProfileForm = () => {
       ...prev,
       theme,
     }));
+
+    // Apply theme change immediately if it's different from current theme
+    if (theme !== currentTheme) {
+      toggleColorMode();
+    }
   };
 
   const handleAvatarChange = (avatar: string) => {
