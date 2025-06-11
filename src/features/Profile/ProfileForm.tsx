@@ -1,7 +1,7 @@
 import {StyledForm, ThemeContainer} from "features/Profile/StyledProfile.tsx";
 import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
 import {FormEvent, useEffect, useState} from "react";
-import {editData, fetchProfileData, selectProfileData} from "features/Profile/profileSlice.tsx";
+import {editData, selectProfileData} from "features/Profile/profileSlice.tsx";
 import {Box, Button, CircularProgress, TextField, Typography} from "@mui/material";
 import ProfileAvatar from "features/Profile/ProfileAvatar.tsx";
 import ThemeToggle, {ThemeToggleMode} from "components/ThemeToggle/ThemeToggle.tsx";
@@ -25,10 +25,6 @@ const ProfileForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-
-  useEffect(() => {
-    dispatch(fetchProfileData());
-  }, [dispatch]);
 
   const [initialFormData, setInitialFormData] = useState({
     name: "",
@@ -61,7 +57,7 @@ const ProfileForm = () => {
       ...prev,
       theme,
     }));
-    
+
     if (theme !== currentTheme) {
       toggleColorMode();
     }

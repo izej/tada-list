@@ -1,6 +1,6 @@
 import {ProfileContainer} from "features/Profile/StyledProfile.tsx";
 import {useAppDispatch, useAppSelector} from "hooks/reduxHooks.ts";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 import {fetchProfileData, selectProfileData} from "features/Profile/profileSlice.tsx";
 import Info from "components/Info/Info.tsx";
 import {useTranslation} from "react-i18next";
@@ -9,14 +9,18 @@ import ProfileForm from "features/Profile/ProfileForm.tsx";
 const ProfileEdit = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const dataFetchedRef = useRef(false);
 
   const profileData = useAppSelector(state =>
     selectProfileData()(state)
   );
 
   useEffect(() => {
-    dispatch(fetchProfileData());
-  }, [dispatch]);
+    if (!dataFetchedRef.current) {
+      dataFetchedRef.current = true;
+      dispatch(fetchProfileData());
+    }
+  }, []);
 
   const name = profileData?.name ?? t("profile.defaultName");
 
