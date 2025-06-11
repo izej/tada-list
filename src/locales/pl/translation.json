@@ -52,6 +52,7 @@
   },
   "profile": {
     "greeting": "Hej {{name}}, dobrze Cię widzieć!",
+    "defaultName": "ziomuś",
     "info":  "Zaktualizuj, co trzeba i leć dalej \uD83D\uDCA8",
     "edit": {
       "cta": "Zapisz zmiany",

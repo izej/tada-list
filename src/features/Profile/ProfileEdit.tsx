@@ -18,7 +18,7 @@ const ProfileEdit = () => {
     dispatch(fetchProfileData());
   }, [dispatch]);
 
-  const name = profileData?.name ?? profileData?.userData?.email;
+  const name = profileData?.name ?? t("profile.defaultName");
 
   return <ProfileContainer>
     <Info

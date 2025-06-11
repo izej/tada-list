@@ -52,6 +52,7 @@
   },
   "profile": {
     "greeting": "Hello {{name}}, good to see you!",
+    "defaultName": "buddy",
     "info":  "Update what you need and move on \uD83D\uDCA8",
     "edit": {
       "cta": "Save",

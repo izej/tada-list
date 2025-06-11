@@ -61,8 +61,7 @@ const ProfileForm = () => {
       ...prev,
       theme,
     }));
-
-    // Apply theme change immediately if it's different from current theme
+    
     if (theme !== currentTheme) {
       toggleColorMode();
     }
