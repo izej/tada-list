@@ -26,7 +26,7 @@ const Main = styled("main")(({ theme }) => ({
   boxSizing: "border-box",
   overflow: "hidden",
   [theme.breakpoints.down("sm")]: {
-    paddingBottom: theme.spacing(8), // Add extra padding at the bottom for mobile to prevent content from being covered by the navigation
+    paddingBottom: theme.spacing(8),
   },
 }));
 

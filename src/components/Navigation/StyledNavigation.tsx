@@ -1,6 +1,6 @@
 import {BottomNavigation, Toolbar, styled, Box} from "@mui/material";
 
-export const StyledBottomNavigation = styled(BottomNavigation)(() => ({
+export const StyledBottomNavigation = styled(BottomNavigation)(({ theme }) => ({
   position: "fixed",
   bottom: 0,
   left: 0,
@@ -8,7 +8,7 @@ export const StyledBottomNavigation = styled(BottomNavigation)(() => ({
   width: "100%",
   maxWidth: "100vw",
   zIndex: 1100,
-  backgroundColor: "transparent",
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export const MobileNavItemWrapper = styled(Box)(() => ({
