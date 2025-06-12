@@ -20,11 +20,14 @@ export const StyledAuthForm = styled(Box)<{ component?: React.ElementType }>(
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: 400,
+    width: "100%",
     maxWidth: 400,
     gap: theme.custom.spacingSizes.m,
+    boxSizing: "border-box",
+    padding: theme.spacing(2),
   })
 );
+
 
 export const BottomImageWrapper = styled(Box)(({theme}) => ({
   bottom: 0,
