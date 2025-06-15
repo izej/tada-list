@@ -1,5 +1,5 @@
 import {useAppSelector} from "hooks/reduxHooks";
-import {selectTasksByDateAndStatus} from "./tasksSlice";
+import {selectTasksByDateAndStatus} from "./tasksSlice.tsx";
 import Info from "../../components/Info/Info";
 import {Container} from "./StyledTasks";
 import {useTranslation} from "react-i18next";

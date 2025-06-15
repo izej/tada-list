@@ -14,7 +14,7 @@ import {useAuth} from "providers/AuthContext";
 import axios from "axios";
 import api from "api/apiConfig";
 import { useAppDispatch } from "hooks/reduxHooks";
-import { setUserData } from "features/Profile/profileSlice";
+import { setUserData } from "features/Profile/profileSlice.tsx";
 
 const LoginForm = () => {
   const {t} = useTranslation();

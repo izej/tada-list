@@ -6,6 +6,8 @@ export const TASKS_API_URL = `${API_BASE_URL}/tasks`;
 
 export const PROFILE_API_URL = `${API_BASE_URL}/profile`;
 
+export const ACHIEVEMENTS_API_URL = `${API_BASE_URL}/achievements`;
+
 import axios from 'axios';
 
 

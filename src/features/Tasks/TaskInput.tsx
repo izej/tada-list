@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import confetti from "canvas-confetti";
 import {ActionsContainer, ButtonsContainer} from "./StyledTasks";
 import {useAppDispatch} from "hooks/reduxHooks";
-import {createTask} from "./tasksSlice";
+import {createTask} from "./tasksSlice.tsx";
 
 interface TasksInputProps {
   date?: string,

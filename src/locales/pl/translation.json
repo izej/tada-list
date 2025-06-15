@@ -3,6 +3,7 @@
     "home": "Strona główna",
     "calendar": "Kalenadrz",
     "profile": "Profil",
+    "achievements": "Trofea",
     "login": "Login",
     "register": "Rejestracja"
   },
@@ -72,6 +73,41 @@
     },
     "login": {
       "incorrect_data": "Niepoprawny email lub hasło"
+    }
+  },
+  "achievement": {
+    "empty": "\uD83D\uDC15 Bez odznak, ale z napędem na cztery łapy! \uD83D\uDC3E",
+    "name": {
+      "weekly_warrior": "Tygodniowy wojownik",
+      "passionate_tada": "Zapalony Tada",
+      "foundation": "Fundament",
+      "busy_bee": "Pracowita pszczółka",
+      "productivity_master": "Mistrz produktywności",
+      "progressive": "Postępowy",
+      "morning_starter": "Poranny starter",
+      "night_owl": "Nocna sowa",
+      "daily_rhythm": "Rytm dnia",
+      "balanced": "Zrównoważony",
+      "specialist": "Specjalista",
+      "multitalent": "Multitalent",
+      "daily_surprise": "Niespodzianka dnia",
+      "secret_badge": "Sekretna odznaka"
+    },
+    "description": {
+      "weekly_warrior": "Wykonaj przynajmniej 1 zadanie codziennie przez 7 dni",
+      "passionate_tada": "Zakończ wszystkie zadania dnia przez 3 kolejne dni",
+      "foundation": "Utrzymaj 5-dniowy streak z przynajmniej 3 zadaniami dziennie",
+      "busy_bee": "Wykonaj 10 zadań jednego dnia",
+      "productivity_master": "Wykonaj 50 zadań ogółem",
+      "progressive": "Ukończ więcej zadań niż poprzedniego tygodnia",
+      "morning_starter": "Wykonaj pierwsze zadanie przed 9:00 przez 5 dni z rzędu",
+      "night_owl": "Ukończ zadanie po 22:00 trzy razy w tygodniu",
+      "daily_rhythm": "Wykonaj zadanie rano, w południe i wieczorem w ciągu jednego dnia",
+      "balanced": "Wykonaj po jednym zadaniu z każdej kategorii (np. praca, zdrowie, relaks) jednego dnia",
+      "specialist": "Wykonaj 10 zadań z jednej kategorii w ciągu tygodnia",
+      "multitalent": "Wykonaj zadania z 5 różnych kategorii w 3 dni",
+      "daily_surprise": "Zdobądź losową nagrodę po ukończeniu 3 zadań w jeden dzień (np. co 10 dni system losuje)",
+      "secret_badge": "Użytkownik nie wie, co trzeba zrobić – nagroda ukryta za np. wykonanie zadania \"Zrób coś dla siebie\""
     }
   }
 }

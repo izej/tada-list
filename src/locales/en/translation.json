@@ -3,6 +3,7 @@
     "home": "Home",
     "calendar": "Calendar",
     "profile": "Profile",
+    "achievements": "Trophies",
     "login": "Login",
     "register": "Register"
   },
@@ -72,6 +73,41 @@
     },
     "login": {
       "incorrect_data": "Incorrect email or password"
+    }
+  },
+  "achievement": {
+    "empty": "\uD83D\uDC15 No achievements yet, but running on rocket paws! \uD83D\uDC3E",
+    "name": {
+      "weekly_warrior": "Weekly Warrior",
+      "passionate_tada": "Passionate Tada",
+      "foundation": "Foundation",
+      "busy_bee": "Busy Bee",
+      "productivity_master": "Productivity Master",
+      "progressive": "Progressive",
+      "morning_starter": "Morning Starter",
+      "night_owl": "Night Owl",
+      "daily_rhythm": "Daily Rhythm",
+      "balanced": "Balanced",
+      "specialist": "Specialist",
+      "multitalent": "Multitalent",
+      "daily_surprise": "Daily Surprise",
+      "secret_badge": "Secret Badge"
+    },
+    "description": {
+      "weekly_warrior": "Complete at least 1 task every day for 7 days",
+      "passionate_tada": "Complete all daily tasks for 3 consecutive days",
+      "foundation": "Maintain a 5-day streak with at least 3 tasks per day",
+      "busy_bee": "Complete 10 tasks in one day",
+      "productivity_master": "Complete 50 tasks in total",
+      "progressive": "Complete more tasks than the previous week",
+      "morning_starter": "Complete your first task before 9:00 AM for 5 consecutive days",
+      "night_owl": "Complete a task after 10:00 PM three times a week",
+      "daily_rhythm": "Complete a task in the morning, at noon, and in the evening in one day",
+      "balanced": "Complete one task from each category (e.g. work, health, relaxation) in one day",
+      "specialist": "Complete 10 tasks from one category within a week",
+      "multitalent": "Complete tasks from 5 different categories within 3 days",
+      "daily_surprise": "Earn a random reward after completing 3 tasks in one day (e.g. every 10 days the system draws)",
+      "secret_badge": "User does not know what to do – hidden reward for example for completing a task named \"Do something for yourself\""
     }
   }
 }

@@ -15,6 +15,7 @@ import { useAuth } from 'providers/AuthContext';
 import Spinner from 'components/Spinner/Spinner';
 import Calendar from "pages/Calendar/Calendar.tsx";
 import Profile from "pages/Profile/Profile.tsx";
+import Achievements from "pages/Achievements/Achievements.tsx";
 
 function getRoutes(): RouteObject[] {
   return [
@@ -34,6 +35,13 @@ function getRoutes(): RouteObject[] {
           element: <MainLayout />,
           children: [
             { index: true, element: <Calendar /> },
+          ],
+        },
+        {
+          path: '/achievements',
+          element: <MainLayout />,
+          children: [
+            { index: true, element: <Achievements /> },
           ],
         },
         {
