@@ -7,6 +7,7 @@ import {ThemeMode} from "models/Theme.ts";
 
 interface ProfileData {
   name?: string,
+  id?: string,
   userData?: User,
   themeMode?: ThemeMode,
   avatar?: string
@@ -90,5 +91,8 @@ export const { setUserData } = profileSlice.actions;
 
 export const selectProfileData = () => (state: RootState) =>
   state.profile.profileData
+
+export const selectProfileId = () => (state: RootState) =>
+  state.profile.profileData.id
 
 export default profileSlice.reducer;
