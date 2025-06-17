@@ -48,7 +48,10 @@ export default function MainLayout() {
   }, [dispatch]);
 
   useAchievementListener(profileId ?? '', (achievement) => {
-    toast.success(`🎉 Odblokowano nowe osiągnięcie: ${t(achievement.achievementNameKey)}!`);
+    toast.info(
+      `Odblokowano nowe osiągnięcie: ${t(achievement.achievementNameKey)}!`,
+      { icon: <span>🎉</span> }
+    );
   });
 
 
